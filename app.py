@@ -44,9 +44,9 @@ def predict():
         result = f"🌾 Recommended Crop: {crop}"
 
     except Exception as e:
-        result = f"⚠️ Error: {str(e)}"
+        result = f" Error: {str(e)}"
 
     return render_template('index.html', result=result)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=False, host='0.0.0.0', port=10000)
