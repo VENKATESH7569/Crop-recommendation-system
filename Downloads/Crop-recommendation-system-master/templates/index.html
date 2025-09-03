@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="The crop recommendation system which helps you in choosing the best crop based on soil and weather conditions.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation System</title>
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #a8e063, #56ab2f);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #2d572c;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #56ab2f;
+            box-shadow: 0 0 6px rgba(86,171,47,0.5);
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            background: #56ab2f;
+            color: #fff;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #3d8b29;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background: #e8f9e4;
+            border-left: 6px solid #56ab2f;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d572c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌱 Get Your Ideal Crop Recommendation</h1>
+
+        <form action="/predict" method="POST">
+            <label for="nitrogen">Nitrogen</label>
+            <input type="text" id="nitrogen" name="Nitrogen" placeholder="Enter Nitrogen value" required>
+
+            <label for="phosphorus">Phosphorus</label>
+            <input type="text" id="phosphorus" name="Phosphorus" placeholder="Enter Phosphorus value" required>
+
+            <label for="potassium">Potassium</label>
+            <input type="text" id="potassium" name="Potassium" placeholder="Enter Potassium value" required>
+
+            <label for="temperature">Temperature (°C)</label>
+            <input type="text" id="temperature" name="Temperature" placeholder="Enter Temperature in °C" required>
+
+            <label for="humidity">Humidity (%)</label>
+            <input type="text" id="humidity" name="Humidity" placeholder="Enter Humidity in %" required>
+
+            <label for="ph">pH</label>
+            <input type="text" id="ph" name="pH" placeholder="Enter pH value" required>
+
+            <label for="rainfall">Rainfall (mm)</label>
+            <input type="text" id="rainfall" name="Rainfall" placeholder="Enter Rainfall in mm" required>
+
+            <button type="submit">🌾 Get Recommendation</button>
+        </form>
+
+        {% if result %}
+            <div class="result">Recommended Crop: {{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
