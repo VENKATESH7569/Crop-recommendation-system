@@ -2,7 +2,6 @@ from flask import Flask, request, render_template
 import numpy as np
 import pickle
 
-# Load models and scalers
 model = pickle.load(open('model.pkl', 'rb'))
 sc = pickle.load(open('standardscaler.pkl', 'rb'))
 mx = pickle.load(open('minmaxscaler.pkl', 'rb'))
@@ -17,7 +16,7 @@ def index():
 def predict():
     try:
         N = float(request.form['Nitrogen'])
-        P = float(request.form['Phosphorus'])  # fixed typo
+        P = float(request.form['Phosphorus']) 
         K = float(request.form['Potassium'])
         temp = float(request.form['Temperature'])
         humidity = float(request.form['Humidity'])
@@ -40,7 +39,7 @@ def predict():
         }
 
         crop = crop_dict.get(prediction[0], "Unknown crop")
-        result = crop   # only crop name, no prefix
+        result = crop 
 
     except Exception as e:
         result = f"Error: {str(e)}"

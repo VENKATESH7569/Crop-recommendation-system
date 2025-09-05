@@ -1,6 +1,7 @@
-Flask
 numpy
-scikit-learn
 pandas
+scikit-learn
+flask
 matplotlib
 seaborn
+jupyter
